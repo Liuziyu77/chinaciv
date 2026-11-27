@@ -62,7 +62,7 @@ export function initPedia(data) {
       <p>地址栏中始终保存着当前视图（${hasLenses ? "透镜、" : ""}选中对象和视角）的链接；用<i>分享</i>复制链接或下载图片。</p>
       <h4>致谢</h4>
       <p>${esc(ATTRIBUTION)}</p>
-      <p>姊妹项目：<a href="https://world-civilization-map.com" target="_blank" rel="noopener">worldciv</a> —— 把整个世界画成一张《文明》地图。</p>`],
+      <p><a href="https://world-civilization-map.com" target="_blank" rel="noopener">worldciv</a> —— 把整个世界画成一张《文明》地图。</p>`],
     notice: ["地图说明", () => `
       ${h2("terrain", "🗺️", "地图说明")}
       <p class="pedia-notice"><b>${noticeHtml(notice)}</b></p>

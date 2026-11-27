@@ -20,7 +20,7 @@ Every border, every city, every number comes from public statistics and satellit
 
 [Open the live map →](https://china-civilization-map.com)
 
-<sub>Sister project [**worldciv**](https://world-civilization-map.com) · the whole world as a strategy game · [GitHub](https://github.com/Liuziyu77/worldciv)</sub>
+<sub>[**worldciv**](https://world-civilization-map.com) · the whole world as a strategy game · [GitHub](https://github.com/Liuziyu77/worldciv)</sub>
 
 </div>
 

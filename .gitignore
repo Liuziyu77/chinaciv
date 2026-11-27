@@ -1,0 +1,24 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Vercel
+.vercel/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+uv.lock
+
+# Data pipeline scratch: raw downloads and intermediate files are large and reproducible
+data/raw/
+data/interim/
+pipeline/vendor/
+.vercel
+
+# Node (build-time tooling only: pinyin-pro)
+node_modules/
+package-lock.json

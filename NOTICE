@@ -1,0 +1,27 @@
+chinaciv
+========
+
+The visual language and the map engine come from "usaciv" by Andrej Karpathy:
+
+    usaciv — the United States as a strategy game
+    Copyright (c) 2026 Andrej Karpathy
+    https://karpathy.ai/usaciv/
+    License: MIT
+
+Used: the static-site engine under web/ (Canvas 2D renderer, procedural terrain / city / water art, camera,
+hex grid, lens dock, city panel, almanac, share and export) and the web/data JSON contract.
+
+Changes made in this repository: the China edition — Albers projection for China, hex grid and map frame,
+province / city / county wiring, Simplified-Chinese interface and Almanac, 27 lens layers, science and culture
+yields, pinyin search, self-hosted font subset, and the static deployment configuration.
+
+Data
+----
+
+All figures come from public sources and keep their original licences: statistics communiqués of the National
+Bureau of Statistics and provincial / municipal bureaus, the 7th National Population Census, UNESCO, Natural
+Earth (public domain), OpenStreetMap (ODbL 1.0), USGS and NOAA (public domain), Global Energy Monitor (CC BY
+4.0), WorldPop and ESA WorldCover (CC BY 4.0), IBTrACS, JRC, ACAG and Wikipedia (CC BY-SA 4.0). The site's
+Almanac lists each publisher, licence, URL and year; the machine-readable list is web/data/sources.json.
+
+Font: Noto Serif SC, subset and self-hosted, under the SIL Open Font License 1.1.

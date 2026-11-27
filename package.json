@@ -1,0 +1,18 @@
+{
+  "name": "chinaciv",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "China as a strategy-game map — a hex map of the real Chinese economy, drawn from public data.",
+  "scripts": {
+    "dev": "python3 -m http.server 8901 --directory web",
+    "build:pinyin": "node pipeline/build_pinyin.mjs",
+    "build:lenses": "python3 pipeline/build_lenses.py",
+    "build:yields": "python3 pipeline/build_yields.py",
+    "build:fonts": "node pipeline/build_fonts.mjs"
+  },
+  "devDependencies": {
+    "pinyin-pro": "^3.27.0",
+    "subset-font": "^2.4.0"
+  }
+}

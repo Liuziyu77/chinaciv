@@ -176,11 +176,16 @@ function blockedCells(w) {
 const WATER_OK = new Set(["coast", "bridge", "dam"]);
 function chooseCell(m, it, blocked, load) {
   const { grid } = m.w;
-  if (!blocked.has(it.cell)) return it.cell;
+  // A wonder keeps its own hex even when the city banner shares it: the slot logic draws the two side by side,
+  // which beats moving a landmark across the river into the next prefecture.
+  if (!blocked.has(it.cell) || it.kind === "wonder") return it.cell;
   const tx = Number.isFinite(it.data.x) ? it.data.x : grid.cx(it.cell);
   const ty = Number.isFinite(it.data.y) ? it.data.y : grid.cy(it.cell);
   const own = new Set(Array.isArray(it.data.cells) ? it.data.cells : []);
   const waterOk = it.kind === "port" || WATER_OK.has(it.motif); // a harbour, a bridge or a lighthouse may stand on water
+  // A site that is pushed out of a crowded hex may move to a neighbour, never out of its own province and never onto
+  // water: a wonder in Shanghai must not surface in Jiangsu, and none may float in the sea.
+  const home = m.w.raw.owner?.[it.cell] ?? -1;
   const ring1 = new Set();
   for (let d = 0; d < 6; d++) ring1.add(grid.neighbour(it.cell, d));
   // a fort or park that spans several hexes may stand anywhere on its own ground nearby
@@ -189,7 +194,8 @@ function chooseCell(m, it, blocked, load) {
     let best = -1, bestS = Infinity;
     for (const c of cand) {
       if (!(c >= 0) || c === it.cell || blocked.has(c)) continue;
-      if (m.w.water?.[c] && !waterOk) continue;
+      if (home >= 0 && m.w.raw.owner?.[c] !== home) continue;
+      if (!waterOk && (m.w.water?.[c] || (m.w.raw.owner?.[c] ?? -1) < 0)) continue;
       const sc = Math.hypot(grid.cx(c) - tx, grid.cy(c) - ty) / grid.R + extra + (load.get(c) || 0) * 0.7 - (own.has(c) ? 0.4 : 0) +
         (m.w.resources?.byCell?.get(c)?.length ? 0.3 : 0);
       if (sc < bestS) { bestS = sc; best = c; }

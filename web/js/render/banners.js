@@ -565,11 +565,15 @@ function badgeFor(badges, city) {
 /** Population floor for a hex radius in screen px: national view shows the big metros, close zoom everything. */
 // Cities by display size (population, else 2020 census; world.js sizePop), unknown last. Cached per array.
 const orders = new WeakMap();
+/** A provincial or national seat is always worth a plate, however small its population. */
+const isSeat = (c) => !!(c && (c.province_capital || c.capital));
 function bannerOrder(cities) {
   let o = orders.get(cities);
   if (!o) {
     const sz = (c) => c.drawPop ?? c.sizePop ?? c.population ?? -1;
-    o = [...cities].sort((a, b) => sz(b) - sz(a));
+    // capitals first (largest first), then everything else by size, so the plate budget never pushes a
+    // provincial seat off the map while its prefecture-level neighbours stay on it
+    o = [...cities].sort((a, b) => (isSeat(b) ? 1 : 0) - (isSeat(a) ? 1 : 0) || sz(b) - sz(a));
     orders.set(cities, o);
   }
   return o;
@@ -621,10 +625,11 @@ export function drawBanners(ctx, cam, w, state, yields, nation = state.nation) {
     const city = pinned ? sel : cities[k];
     if (!pinned) {
       if (city === sel) continue; // already placed
-      if (shown >= budget) break;
+      const cap = isSeat(city);
+      if (shown >= budget && !cap) break;
       const size = city.drawPop ?? city.sizePop ?? city.population;
       if (size == null) break; // bannerOrder puts unknown sizes last
-      if (size < minPop) continue;
+      if (size < minPop && !cap) continue;
     }
     if (city.cell == null) continue;
     const [sx, sy] = cam.toScreen(grid.cx(city.cell), grid.cy(city.cell));

@@ -15,9 +15,12 @@ Every border, every city, every number comes from public statistics and satellit
 <img src="docs/images/tag-1.png" height="30" alt="344 cities">
 <img src="docs/images/tag-2.png" height="30" alt="5,843 cells">
 <img src="docs/images/tag-3.png" height="30" alt="Apache-2.0">
+<a href="https://world-civilization-map.com"><img src="docs/images/tag-4.png" height="30" alt="世界文明 · worldciv"></a>
 <br>
 
 [Open the live map →](https://china-civilization-map.com)
+
+<sub>Sister project [**worldciv**](https://world-civilization-map.com) · the whole world as a strategy game · [GitHub](https://github.com/Liuziyu77/worldciv)</sub>
 
 </div>
 

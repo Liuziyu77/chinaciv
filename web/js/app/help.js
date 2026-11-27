@@ -50,7 +50,8 @@ export function initHelp({ notice = null } = {}) {
       </section>`).join("")}</div>
     <p class="help-foot">每个数字都可追溯到公开数据：打开<b>百科</b>查看数据来源。地址栏中的链接总能重新打开当前视图。</p>
     <p class="help-foot help-notice"><b>地图说明：</b>${noticeHtml(notice, { long: true })}</p>
-    <p class="help-foot">${ATTRIBUTION}源代码：<a href="chinaciv-source.zip" download>chinaciv-source.zip</a>（MIT 许可证；用 uv 运行，见其中的 README）。</p>`;
+    <p class="help-foot">${ATTRIBUTION}源代码：<a href="chinaciv-source.zip" download>chinaciv-source.zip</a>（MIT 许可证；用 uv 运行，见其中的 README）。</p>
+    <p class="help-foot">姊妹项目：<a href="https://world-civilization-map.com" target="_blank" rel="noopener">worldciv</a> —— 把整个世界画成一张《文明》地图 · <a href="https://github.com/Liuziyu77/worldciv" target="_blank" rel="noopener">GitHub</a></p>`;
 
   const close = () => {
     if (modal.hidden) return;

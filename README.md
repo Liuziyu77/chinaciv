@@ -16,9 +16,12 @@
 <img src="docs/images/tag-1.png" height="30" alt="344 座城市">
 <img src="docs/images/tag-2.png" height="30" alt="5,843 个地块">
 <img src="docs/images/tag-3.png" height="30" alt="Apache-2.0">
+<a href="https://world-civilization-map.com"><img src="docs/images/tag-4.png" height="30" alt="世界文明 · worldciv"></a>
 <br>
 
 [在线体验 →](https://china-civilization-map.com)
+
+<sub>姊妹项目 [**worldciv**](https://world-civilization-map.com) · 把整个世界画成一张《文明》地图 · [GitHub](https://github.com/Liuziyu77/worldciv)</sub>
 
 </div>
 

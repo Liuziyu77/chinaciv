@@ -632,7 +632,11 @@ export function drawBanners(ctx, cam, w, state, yields, nation = state.nation) {
       if (size < minPop && !cap) continue;
     }
     if (city.cell == null) continue;
-    const [sx, sy] = cam.toScreen(grid.cx(city.cell), grid.cy(city.cell));
+    // Stand the plate on the city itself, not on its hex centre: a coastal city's hex centre can be 30 km
+    // inland or offshore, which used to put 深圳's plate in 东莞 and 珠海's in 江门.
+    const bx = Number.isFinite(city.x) ? city.x : grid.cx(city.cell);
+    const by = Number.isFinite(city.y) ? city.y : grid.cy(city.cell);
+    const [sx, sy] = cam.toScreen(bx, by);
     if (sx < -200 || sy < -80 || sx > cam.w + 200 || sy > cam.h + 100) continue;
 
     const focused = focus == null || inFocus(focus, city, sel);
